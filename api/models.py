@@ -56,7 +56,7 @@ class Album(models.Model):
         ordering = ('year',)
 
 
-class Track(models):
+class Track(models.Model):
     """
     The model represents the connection of many to many
     for the album and the songs.
