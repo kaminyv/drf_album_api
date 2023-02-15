@@ -40,8 +40,7 @@ class Album(models.Model):
     """
     The model represents the album for artist.
     """
-    year = models.SmallIntegerField(max_length=4,
-                                    help_text='Enter a year create')
+    year = models.SmallIntegerField(help_text='Enter a year create')
     artist = models.ForeignKey('Artist',
                                related_name='albums', on_delete=models.CASCADE)
     song = models.ManyToManyField('Song',
@@ -64,5 +63,10 @@ class Track(models.Model):
     track_number = models.SmallIntegerField(help_text='Enter a number track')
     album = models.ForeignKey('Album',
                               related_name='tracks', on_delete=models.CASCADE)
-    song = models.ForeignKey('Song',
-                             related_name='tracks', on_delete=models.CASCADE)
+    song = models.ForeignKey('Song', on_delete=models.CASCADE)
+
+    def __str__(self):
+        return str(self.track_number)
+
+    class Meta:
+        unique_together = (('track_number', 'album', 'song'),)
