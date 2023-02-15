@@ -1,1 +1,7 @@
-# drf_album_api
+# DRF Album API
+
+Test application on the django rest framework
+
+---
+
+## Задача
